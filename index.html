@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPLENDIDE WONDER - Salon de Coiffure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8a5a44;
+            --primary-light: #b07d62;
+            --secondary: #d4af37;
+            --dark: #2c2416;
+            --light: #f8f5f0;
+            --gray: #e9e5dd;
+            --text: #333333;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #e6c035;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(138, 90, 68, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            box-shadow: 0 6px 15px rgba(138, 90, 68, 0.4);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .logo h2:after {
+            display: none;
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('spl.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .section-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding: 0 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+
+        .section-note i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 15px 0;
+        }
+
+        .service-btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Brands Section */
+        .brands {
+            background-color: var(--gray);
+        }
+
+        .brands-category {
+            margin-bottom: 50px;
+        }
+
+        .brands-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .brand-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .brand-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .brand-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Map Container */
+        .map-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-note {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark);
+            z-index: 10;
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+        }
+
+        .modal-intro {
+            background-color: var(--gray);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #bbb;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-contact p {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero {
+                margin-top: 60px;
+                height: 90vh;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .service-grid,
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-crown logo-icon"></i>
+                <h2>SPLENDIDE WONDER</h2>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#services">Nos Services</a></li>
+                    <li><a href="#brands-hommes">Marques Hommes</a></li>
+                    <li><a href="#brands-femmes">Marques Femmes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>SPLENDIDE WONDER</h1>
+            <a href="#services" class="btn">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Nos Services Professionnels</h2>
+            <p class="section-note">
+                <i class="fas fa-info-circle"></i>
+                Note : Cette liste présente une sélection de nos services. Notre salon propose bien d'autres prestations 
+                pour sublimer votre beauté. N'hésitez pas à nous contacter pour découvrir l'étendue de nos services.
+            </p>
+            <div class="service-grid" id="servicesGrid">
+                <!-- Services will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section - Hommes -->
+    <section class="brands" id="brands-hommes">
+        <div class="container">
+            <h2>Marques pour Hommes</h2>
+            <p class="section-note">
+                <i class="fas fa-info-circle"></i>
+                Note : Ces marques représentent une sélection de notre gamme pour hommes. Nous travaillons avec de 
+                nombreuses autres marques de qualité pour répondre à tous vos besoins capillaires.
+            </p>
+            <div class="brands-category">
+                <div class="brands-grid" id="brandsMenGrid">
+                    <!-- Marques pour hommes will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section - Femmes -->
+    <section class="brands" id="brands-femmes">
+        <div class="container">
+            <h2>Marques pour Femmes</h2>
+            <p class="section-note">
+                <i class="fas fa-info-circle"></i>
+                Note : Cette sélection présente quelques-unes des marques que nous proposons pour femmes. Notre salon 
+                dispose d'une large gamme de produits pour tous les types de cheveux et tous les styles.
+            </p>
+            <div class="brands-category">
+                <div class="brands-grid" id="brandsWomenGrid">
+                    <!-- Marques pour femmes will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Avenue Kapele N/03, Arrêt Dispensaire, Route Muyambo, Commune Annexe, Lubumbashi</p>
+                            <!-- Google Maps Integration -->
+                            <div class="map-container">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.237042839936!2d27.476289074829823!3d-11.63515718832173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1972376d8ff3fccb%3A0x1d3ee23ae2cc7e18!2sLubumbashi%2C%20R%C3%A9publique%20D%C3%A9mocratique%20du%20Congo!5e0!3m2!1sfr!2sfr!4v1691234567890!5m2!1sfr!2sfr" 
+                                    class="map-frame"
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                            <p class="map-note">
+                                <i class="fas fa-map-signs"></i> 
+                                Cliquez sur "Agrandir la carte" pour obtenir l'itinéraire exact vers notre salon
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Téléphone / WhatsApp</h4>
+                            <p>+243 971 611 591</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mozazananouche@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h4>Responsable</h4>
+                            <p>Nanouche Mozaza</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/243971611591" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i> Envoyer un message WhatsApp
+                    </a>
+                </div>
+                <div>
+                    <h3>Horaires d'ouverture</h3>
+                    <p>Lundi - Vendredi: 7h30 - 21h00</p>
+                    <p>Samedi: 7h30 - 20h00</p>
+                    <p>Dimanche: 8h00 - 20h00</p>
+                    
+                    <h3 style="margin-top: 30px;">Réservez votre consultation</h3>
+                    <p>Prenez rendez-vous pour une consultation gratuite et découvrez comment nous pouvons sublimer votre style.</p>
+                    <a href="#contact" class="btn" id="reservationBtn">Prendre rendez-vous</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <h3>Demande d'information</h3>
+                <div class="modal-intro" id="modalIntro">
+                    Bonjour, je suis intéressé(e) par ce service et j'aimerais obtenir plus d'informations.
+                </div>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="service">Service concerné</label>
+                    <input type="text" id="service" name="service" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="name">Votre nom complet *</label>
+                    <input type="text" id="name" name="name" required placeholder="Ex: nanouche Mozaza">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Numéro de téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Ex: +243 99 658 3170">
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" placeholder="Ex: exemple@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="preference">Vous préférez :</label>
+                    <select id="preference" name="preference">
+                        <option value="info">Obtenir plus d'informations</option>
+                        <option value="rdv">Prendre un rendez-vous</option>
+                        <option value="devis">Demander un devis</option>
+                        <option value="autre">Autre demande</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date souhaitée (pour rendez-vous)</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre message détaillé *</label>
+                    <textarea id="message" name="message" required placeholder="Décrivez ici ce que vous souhaitez..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Envoyer via WhatsApp
+                </button>
+                <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #666;">
+                    Vous serez redirigé vers WhatsApp pour finaliser votre demande
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>SPLENDIDE WONDER</h3>
+                    <p>Salon de coiffure professionnel offrant des services d'exception dans un cadre luxueux à Lubumbashi.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/243971611591" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#services">Nos services</a></li>
+                        <li><a href="#brands-hommes">Marques Hommes</a></li>
+                        <li><a href="#brands-femmes">Marques Femmes</a></li>
+                        <li><a href="#contact">Contact & Rendez-vous</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contactez-nous</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Avenue Kapele N/03, Arrêt Dispensaire, Lubumbashi</p>
+                    <p><i class="fas fa-phone-alt"></i> +243 971 611 591</p>
+                    <p><i class="fas fa-envelope"></i> mozazananouche@gmail.com</p>
+                    <p><i class="fas fa-user-tie"></i> Responsable: Nanouche Mozaza</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SPLENDIDE WONDER - Salon de Coiffure Professionnel. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Services data with images, descriptions and prices
+        const services = [
+            {
+                id: 1,
+                name: "Onglerie de qualité",
+                description: "Pose d'ongles en gel, résine, capsules et nail art personnalisé pour des mains parfaites.",
+                price: "10 000 CDF",
+                image: "onglerie.jpg"
+            },
+            {
+                id: 2,
+                name: "Confection de perruque",
+                description: "Perruques sur mesure, naturelles et stylisées pour tous les goûts et occasions.",
+                price: "15 000 CDF",
+                image: "peruque.jpg"
+            },
+            {
+                id: 3,
+                name: "Pose frontale naturelle",
+                description: "Installation professionnelle de frontal pour un look naturel et impeccable.",
+                price: "10 000 CDF",
+                image: "frontale.jpg"
+            },
+            {
+                id: 4,
+                name: "Pose closure",
+                description: "Pose de closure pour compléter vos tresses ou vos poses de perruques.",
+                price: "20 000 CDF",
+                image: "closure.jpg"
+            },
+            {
+                id: 5,
+                name: "Extension de cils",
+                description: "Pose d'extensions de cils pour un regard intense et magnifié.",
+                price: "5 000 CDF",
+                image: "cils.jpg"
+            },
+            {
+                id: 6,
+                name: "Marcouriss",
+                description: "Technique de coiffure sophistiquée pour des résultats durables et élégants.",
+                price: "25 000 CDF",
+                image: "marcouriss.jpg"
+            },
+            {
+                id: 7,
+                name: "Tout mèches",
+                description: "Pose de mèches pour illuminer votre chevelure avec style et naturel.",
+                price: "50 000 CDF",
+                image: "meches.jpg"
+            },
+            {
+                id: 8,
+                name: "Coiffure homme",
+                description: "Coupes modernes, tailles de barbe et soins capillaires pour hommes.",
+                price: "15 000 CDF",
+                image: "homme.jpg"
+            },
+            {
+                id: 9,
+                name: "Tress et autres",
+                description: "Tresses africaines, vanilles, box braids et autres styles traditionnels et modernes.",
+                price: "30 000 CDF",
+                image: "tresses.jpg"
+            }
+        ];
+
+        // Brands data for men
+        const brandsMen = [
+            {
+                id: 1,
+                name: "Style Afro",
+                description: "Produits pour cheveux afro naturels",
+                image: "Homme 1.WEBP"
+            },
+            {
+                id: 2,
+                name: "Barbe Noble",
+                description: "Soins pour barbe africaine",
+                image: "homme 2.jpg"
+            },
+            {
+                id: 3,
+                name: "Cheveux Fort",
+                description: "Fortifiants capillaires",
+                image: "homme 3.jpg"
+            },
+            {
+                id: 4,
+                name: "Look Élégant",
+                description: "Gels et fixatifs premium",
+                image: "homme 4.jpeg"
+            }
+        ];
+
+        // Brands data for women
+        const brandsWomen = [
+            {
+                id: 1,
+                name: "Beauté Noire",
+                description: "Produits pour cheveux crépus",
+                image: "femme 1.jpg"
+            },
+            {
+                id: 2,
+                name: "Lissage Parfait",
+                description: "Produits de lissage naturels",
+                image: "femme 2.jpg"
+            },
+            {
+                id: 3,
+                name: "Brillance Africaine",
+                description: "Huiles et soins brillance",
+                image: "femme 3.jpg"
+            },
+            {
+                id: 4,
+                name: "Tresses Lumineuses",
+                description: "Produits pour tresses",
+                image: "femme 4.jpg"
+            }
+        ];
+
+        // DOM Elements
+        const servicesGrid = document.getElementById('servicesGrid');
+        const brandsMenGrid = document.getElementById('brandsMenGrid');
+        const brandsWomenGrid = document.getElementById('brandsWomenGrid');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+        const contactForm = document.getElementById('contactForm');
+        const serviceInput = document.getElementById('service');
+        const modalIntro = document.getElementById('modalIntro');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const reservationBtn = document.getElementById('reservationBtn');
+
+        // Load services dynamically
+        function loadServices() {
+            services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <img src="${service.image}" alt="${service.name}" class="service-img">
+                    <div class="service-content">
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <div class="price">${service.price}</div>
+                        <button class="btn service-btn" data-service="${service.name}">Demander des infos</button>
+                    </div>
+                `;
+                servicesGrid.appendChild(serviceCard);
+            });
+            
+            // Add event listeners to service buttons
+            document.querySelectorAll('.service-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceName = this.getAttribute('data-service');
+                    openContactModal(serviceName);
+                });
+            });
+        }
+
+        // Load brands for men
+        function loadBrandsMen() {
+            brandsMen.forEach(brand => {
+                const brandCard = document.createElement('div');
+                brandCard.className = 'brand-card';
+                brandCard.innerHTML = `
+                    <img src="${brand.image}" alt="${brand.name}" class="brand-img">
+                    <div class="brand-content">
+                        <h3>${brand.name}</h3>
+                        <p>${brand.description}</p>
+                    </div>
+                `;
+                brandsMenGrid.appendChild(brandCard);
+            });
+        }
+
+        // Load brands for women
+        function loadBrandsWomen() {
+            brandsWomen.forEach(brand => {
+                const brandCard = document.createElement('div');
+                brandCard.className = 'brand-card';
+                brandCard.innerHTML = `
+                    <img src="${brand.image}" alt="${brand.name}" class="brand-img">
+                    <div class="brand-content">
+                        <h3>${brand.name}</h3>
+                        <p>${brand.description}</p>
+                    </div>
+                `;
+                brandsWomenGrid.appendChild(brandCard);
+            });
+        }
+
+        // Open contact modal with service info
+        function openContactModal(serviceName) {
+            serviceInput.value = serviceName;
+            modalIntro.textContent = `Bonjour, je suis intéressé(e) par le service "${serviceName}" et j'aimerais obtenir plus d'informations sur les tarifs, la durée et la disponibilité.`;
+            contactModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeContactModal() {
+            contactModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModal.addEventListener('click', closeContactModal);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+
+        // Handle form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const service = document.getElementById('service').value;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const preference = document.getElementById('preference').value;
+            const date = document.getElementById('date').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            let whatsappMessage = `*NOUVELLE DEMANDE - SPLENDIDE WONDER*\n\n`;
+            whatsappMessage += `*Nom:* ${name}\n`;
+            whatsappMessage += `*Téléphone:* ${phone}\n`;
+            if(email) whatsappMessage += `*Email:* ${email}\n`;
+            whatsappMessage += `*Service concerné:* ${service}\n`;
+            whatsappMessage += `*Type de demande:* ${preference}\n`;
+            if(date) whatsappMessage += `*Date souhaitée:* ${date}\n\n`;
+            whatsappMessage += `*Message:*\n${message}\n\n`;
+            whatsappMessage += `_Cette demande a été envoyée via le site web SPLENDIDE WONDER_`;
+            
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/243971611591?text=${encodedMessage}`, '_blank');
+            
+            // Close modal
+            closeContactModal();
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Reservation button
+        reservationBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openContactModal('Rendez-vous général');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadServices();
+            loadBrandsMen();
+            loadBrandsWomen();
+            
+            // Set min date to today for date input
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').min = today;
+        });
+    </script>
+</body>
+</html>
