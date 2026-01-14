@@ -120,7 +120,7 @@
             padding: 80px 0;
         }
 
-        /* Header & Navigation */
+        /* Header & Navigation - TAILLE RÉDUITE */
         header {
             background-color: white;
             box-shadow: var(--shadow);
@@ -128,25 +128,27 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            padding: 5px 0; /* Réduit le padding */
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 10px 0; /* Réduit de 20px à 10px */
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px; /* Réduit de 15px à 10px */
         }
 
         .logo h2 {
-            font-size: 1.8rem;
+            font-size: 1.4rem; /* Réduit de 1.8rem à 1.4rem */
             color: var(--primary);
             margin: 0;
+            line-height: 1.2;
         }
 
         .logo h2:after {
@@ -155,7 +157,7 @@
 
         .logo-icon {
             color: var(--secondary);
-            font-size: 2rem;
+            font-size: 1.6rem; /* Réduit de 2rem à 1.6rem */
         }
 
         nav ul {
@@ -164,13 +166,14 @@
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin-left: 20px; /* Réduit de 30px à 20px */
         }
 
         nav ul li a {
             font-weight: 600;
             color: var(--dark);
             transition: color 0.3s ease;
+            font-size: 0.9rem; /* Texte plus petit */
         }
 
         nav ul li a:hover {
@@ -179,25 +182,26 @@
 
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.3rem; /* Réduit de 1.5rem */
             background: none;
             border: none;
             color: var(--primary);
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section - CORRIGÉ POUR L'IMAGE */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('spl.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center center; /* Changé de 'center' à 'center center' */
+            background-repeat: no-repeat; /* Ajouté */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 80px;
+            margin-top: 60px; /* Réduit de 80px à 60px car header plus petit */
         }
 
         /* Services Section */
@@ -265,6 +269,48 @@
         .service-btn {
             width: 100%;
             margin-top: 10px;
+        }
+
+        /* Rafraîchissements Section - MODIFIÉ POUR IMAGES */
+        .refreshments {
+            background-color: var(--light);
+        }
+
+        .refreshments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .refreshment-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .refreshment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .refreshment-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .refreshment-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .refreshment-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 15px 0;
         }
 
         /* Brands Section */
@@ -529,7 +575,7 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - AJOUTS POUR L'IMAGE MOBILE */
         @media (max-width: 992px) {
             h1 {
                 font-size: 2.8rem;
@@ -547,7 +593,7 @@
 
             nav ul {
                 position: fixed;
-                top: 80px;
+                top: 60px; /* Adapté pour le header réduit */
                 left: 0;
                 width: 100%;
                 background-color: white;
@@ -569,9 +615,12 @@
                 margin: 15px 0;
             }
 
+            /* CORRECTION DE L'IMAGE SUR MOBILE */
             .hero {
-                margin-top: 60px;
+                margin-top: 50px; /* Réduit pour header plus petit */
                 height: 90vh;
+                background-position: center center;
+                background-attachment: scroll; /* Important pour mobile */
             }
 
             h1 {
@@ -589,6 +638,15 @@
             .map-container {
                 height: 250px;
             }
+
+            /* Header plus petit sur mobile */
+            .logo h2 {
+                font-size: 1.2rem; /* Encore plus petit sur mobile */
+            }
+            
+            .logo-icon {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -598,21 +656,44 @@
 
             h1 {
                 font-size: 1.8rem;
+                padding: 0 15px; /* Ajout de padding pour éviter coupure */
             }
 
             .service-grid,
-            .brands-grid {
+            .brands-grid,
+            .refreshments-grid {
                 grid-template-columns: 1fr;
             }
 
             .map-container {
                 height: 200px;
             }
+
+            /* Header très petit sur mobile */
+            .logo h2 {
+                font-size: 1rem; /* Très petit sur écran réduit */
+                line-height: 1.1;
+            }
+            
+            .logo {
+                gap: 8px;
+            }
+        }
+
+        /* Correction spécifique pour très petits écrans */
+        @media (max-width: 400px) {
+            .logo h2 {
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                height: 85vh;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation - TAILLE RÉDUITE -->
     <header>
         <div class="container nav-container">
             <div class="logo">
@@ -626,6 +707,7 @@
                 <ul id="navMenu">
                     <li><a href="#home">Accueil</a></li>
                     <li><a href="#services">Nos Services</a></li>
+                    <li><a href="#refreshments">Rafraîchissements</a></li>
                     <li><a href="#brands-hommes">Marques Hommes</a></li>
                     <li><a href="#brands-femmes">Marques Femmes</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -634,7 +716,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - CORRIGÉ -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>SPLENDIDE WONDER</h1>
@@ -653,6 +735,20 @@
             </p>
             <div class="service-grid" id="servicesGrid">
                 <!-- Services will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Rafraîchissements Section - NOUVELLE SECTION AVEC IMAGES -->
+    <section class="refreshments" id="refreshments">
+        <div class="container">
+            <h2>Rafraîchissements & Boissons</h2>
+            <p class="section-note">
+                <i class="fas fa-info-circle"></i>
+                Profitez de nos boissons rafraîchissantes pendant votre séance de coiffure. Nous proposons une variété de boissons sucrées pour votre plaisir.
+            </p>
+            <div class="refreshments-grid" id="refreshmentsGrid">
+                <!-- Rafraîchissements will be dynamically loaded here -->
             </div>
         </div>
     </section>
@@ -838,6 +934,7 @@
                     <ul>
                         <li><a href="#home">Accueil</a></li>
                         <li><a href="#services">Nos services</a></li>
+                        <li><a href="#refreshments">Rafraîchissements</a></li>
                         <li><a href="#brands-hommes">Marques Hommes</a></li>
                         <li><a href="#brands-femmes">Marques Femmes</a></li>
                         <li><a href="#contact">Contact & Rendez-vous</a></li>
@@ -858,7 +955,7 @@
     </footer>
 
     <script>
-        // Services data with images, descriptions and prices
+        // Services data with images, descriptions and prices - MODIFIÉ AVEC NOUVEAUX SERVICES
         const services = [
             {
                 id: 1,
@@ -878,7 +975,7 @@
                 id: 3,
                 name: "Pose frontale naturelle",
                 description: "Installation professionnelle de frontal pour un look naturel et impeccable.",
-                price: "10 000 CDF",
+                price: "20 000 CDF",
                 image: "frontale.jpg"
             },
             {
@@ -892,7 +989,7 @@
                 id: 5,
                 name: "Extension de cils",
                 description: "Pose d'extensions de cils pour un regard intense et magnifié.",
-                price: "5 000 CDF",
+                price: "10 000 CDF",
                 image: "cils.jpg"
             },
             {
@@ -904,7 +1001,7 @@
             },
             {
                 id: 7,
-                name: "Tout mèches",
+                name: "Tout mèche",
                 description: "Pose de mèches pour illuminer votre chevelure avec style et naturel.",
                 price: "50 000 CDF",
                 image: "meches.jpg"
@@ -913,15 +1010,82 @@
                 id: 8,
                 name: "Coiffure homme",
                 description: "Coupes modernes, tailles de barbe et soins capillaires pour hommes.",
-                price: "15 000 CDF",
+                price: "5 000 CDF",
                 image: "homme.jpg"
             },
             {
                 id: 9,
+                name: "Coiffure enfant",
+                description: "Coupes spéciales et soins adaptés pour les enfants dans une ambiance ludique.",
+                price: "3 000 CDF",
+                image: "enfant.jpg" // À remplacer par votre image
+            },
+            {
+                id: 10,
+                name: "Coiffure homme spécial",
+                description: "Coupes sophistiquées, stylings créatifs et soins premium pour hommes exigeants.",
+                price: "10 000 CDF",
+                image: "homme-special.jpg" // À remplacer par votre image
+            },
+            {
+                id: 11,
+                name: "Teinture",
+                description: "Coloration professionnelle pour cheveux avec produits de qualité et résultats durables.",
+                price: "25 000 CDF",
+                image: "teinture.jpg" // À remplacer par votre image
+            },
+            {
+                id: 12,
                 name: "Tress et autres",
                 description: "Tresses africaines, vanilles, box braids et autres styles traditionnels et modernes.",
                 price: "30 000 CDF",
                 image: "tresses.jpg"
+            }
+        ];
+
+        // Rafraîchissements data - MODIFIÉ POUR UTILISER DES IMAGES
+        const refreshments = [
+            {
+                id: 1,
+                name: "Simba",
+                description: "Boisson gazeuse rafraîchissante",
+                price: "4 000 CDF",
+                image: "simba.jpg" // À remplacer par votre photo
+            },
+            {
+                id: 2,
+                name: "Beaufort",
+                description: "Boisson sucrée de qualité",
+                price: "3 000 CDF",
+                image: "beaufort.jpg" // À remplacer par votre photo
+            },
+            {
+                id: 3,
+                name: "Eau minérale",
+                description: "Eau plate ou gazeuse",
+                price: "2 000 CDF",
+                image: "eau.jpg" // À remplacer par votre photo
+            },
+            {
+                id: 4,
+                name: "Jus naturels",
+                description: "Jus de fruits frais pressés",
+                price: "5 000 CDF",
+                image: "jus.png" // À remplacer par votre photo
+            },
+            {
+                id: 5,
+                name: "Café/thé",
+                description: "Boissons chaudes de qualité",
+                price: "2 000 CDF",
+                image: "cafe.png" // À remplacer par votre photo
+            },
+            {
+                id: 6,
+                name: "Autres boissons",
+                description: "Large sélection de boissons sucrées",
+                price: "À partir de 2 000 CDF",
+                image: "autres-boissons.jpg" // À remplacer par votre photo
             }
         ];
 
@@ -931,7 +1095,7 @@
                 id: 1,
                 name: "Style Afro",
                 description: "Produits pour cheveux afro naturels",
-                image: "Homme 1.WEBP"
+                image: "homme 1.webp"
             },
             {
                 id: 2,
@@ -983,6 +1147,7 @@
 
         // DOM Elements
         const servicesGrid = document.getElementById('servicesGrid');
+        const refreshmentsGrid = document.getElementById('refreshmentsGrid');
         const brandsMenGrid = document.getElementById('brandsMenGrid');
         const brandsWomenGrid = document.getElementById('brandsWomenGrid');
         const contactModal = document.getElementById('contactModal');
@@ -1017,6 +1182,23 @@
                     const serviceName = this.getAttribute('data-service');
                     openContactModal(serviceName);
                 });
+            });
+        }
+
+        // Load refreshments dynamically - MODIFIÉ POUR IMAGES
+        function loadRefreshments() {
+            refreshments.forEach(item => {
+                const refreshmentCard = document.createElement('div');
+                refreshmentCard.className = 'refreshment-card';
+                refreshmentCard.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="refreshment-img">
+                    <div class="refreshment-content">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <div class="refreshment-price">${item.price}</div>
+                    </div>
+                `;
+                refreshmentsGrid.appendChild(refreshmentCard);
             });
         }
 
@@ -1148,7 +1330,7 @@
                     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                     
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 60, // Adapté pour header réduit
                         behavior: 'smooth'
                     });
                 }
@@ -1158,6 +1340,7 @@
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             loadServices();
+            loadRefreshments();
             loadBrandsMen();
             loadBrandsWomen();
             
@@ -1167,6 +1350,4 @@
         });
     </script>
 </body>
-
 </html>
-
